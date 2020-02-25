@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travels</title>
+</head>
+<body>
+    <h1>Welcome {{logged_user.name}}</h1>
+    <a href="/travels/add">Add a Destination</a>
+    <a href="/logout">Log out.</a>
+    <p>Your Trip Schedules</p>
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+        </tr>
+        {% for trip in mytrips %}
+        <tr>
+            <td><a href="destination/{{trip.id}}">{{trip.destination}}</a></td>
+            <td>{{trip.TDFrom}}</td>
+            <td>{{trip.TDTo}}</td>
+            <td>{{trip.description}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <p>Other Users' Travel Plans:</p>
+        <table>
+            <tr>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+                <th>Action</th>
+            </tr>
+            {% for trip in joinabletrips %}
+            <tr>
+                <td><a href="destination/{{trip.id}}">{{trip.destination}}</a></td>
+                <td>{{trip.TDFrom}}</td>
+                <td>{{trip.TDTo}}</td>
+                <td>{{trip.description}}</td>
+                <td><a href="/join/{{trip.id}}">Join</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main - Belt Exam</title>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>Welcome, Traveler</h1>
+    <h2>Register</h2>
+    <div class = registration>
+        <form action="/register" method="post">
+            {% csrf_token %}
+            <p>Name: <input type="text" name="Name" id="name"></p>
+            <p>Username: <input type="text" name="Username" id="username"></p>
+            <p>Password: <input type="password" name="Password" id="password">
+            <p>Password Confirmation: <input type="password" name="Confirmation" id="confirmation">
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <br>
+    <h2>Login</h2>
+    <div class = login>
+        <form action="/login" method="post">
+            {% csrf_token %}
+            <p>Username: <input type="text" name="Username" id="username"></p>
+            <p>Password: <input type="text" name="Password" id="password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>
